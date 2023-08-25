@@ -1,21 +1,14 @@
 import express from "express";
-import db from "./src/db/index.js";
-import {createuser, getData, resetdata  } from "./src/controllers/user.controller.js";
-import {selectData,getitem,updata,dltdata, uptime } from "./src/controllers/product.controller.js"
-import { mcsqr ,every} from "./src/controllers/staff.controllers.js";
-// import { verify } from "./src/controllers/email.controller.js";
-import verify from "./src/controllers/email.controller.js"
 import cors from "cors"
-import  {Usercreate,bts,destroyme}  from "./src/controllers/duperform.controller.js";
 import usersRoutes from "./src/routes/user.routes.js";
-
-
+import registrationRoutes from "./src/routes/registration.routes.js";
 const app = express()
 const port = 3000
 app.use(express.json())
 app.use(cors('*'))
 
 usersRoutes(app)
+registrationRoutes(app)
 
 // /**
 //  * users routes

@@ -1,7 +1,7 @@
-import db from "../db/index.js"
-const Duperform = (sequelize,DataTypes)=>{
+
+const registrationform = (sequelize,DataTypes)=>{
     return(
-sequelize.define("Duperform",{
+sequelize.define("userloginform",{
     name:{
         type:DataTypes.STRING
     },
@@ -17,4 +17,4 @@ sequelize.define("Duperform",{
 })
     )
 }
-export default Duperform
+export default registrationform

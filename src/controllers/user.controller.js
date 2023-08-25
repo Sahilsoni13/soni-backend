@@ -2,10 +2,9 @@ import db from "../db/index.js";
 
 const createuser = async (req, res) => {
   try {
-    // console.log(req.body,"==req body");
     let data = req.body;
-    let exist = await db.users.findOne({ where: { email: data.email } });
-    if (exist !== null) {
+    let result = await db.users.findOne({ where: { email: data.email } });
+    if (result !== null) {
       res.status(500).send({ message: "This email is already exist" });
     } else {
       let result = await db.users.create(data);
@@ -16,21 +15,13 @@ const createuser = async (req, res) => {
   }
 };
 
-const getData = async (req, res) => {
-  // try {
-  //     let result= await db.users.findAll()
-  //     res.status(200).send(result)
-  // } catch (error) {
-  //     res.status(500).send(error.message)
-  // }
+const Loginuser = async (req, res) => {
   try {
-    let userinfo = req.body;
-    console.log(userinfo, "==userinfo");
+    let data = req.body;
     let result = await db.users.findOne({
-      where: { email: userinfo.username },
+      where: { email: data.username },
     });
-    // console.log(result, "==result");
-    if (result.password == userinfo.password) {
+    if (result.password == data.password) {
       res.status(200).send({ message: "you have logged in successfully" });
     } else {
       res.status(500).send({ message: "please check your email and password" });
@@ -39,7 +30,7 @@ const getData = async (req, res) => {
   } catch (error) {}
 };
 
-const resetdata = async (req,res)=>{
+const updatepassword = async (req,res)=>{
 try {
   let resetdata = req.body.Email;
    let result = await db.users.findOne({where:{email:resetdata}})
@@ -56,4 +47,4 @@ try {
 }
 }
 
-export { createuser, getData ,resetdata};
+export { createuser, Loginuser ,updatepassword};
