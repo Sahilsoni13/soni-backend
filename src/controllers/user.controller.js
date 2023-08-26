@@ -26,25 +26,29 @@ const Loginuser = async (req, res) => {
     } else {
       res.status(500).send({ message: "please check your email and password" });
     }
-   
   } catch (error) {}
 };
 
-const updatepassword = async (req,res)=>{
-try {
-  let resetdata = req.body.Email;
-   let result = await db.users.findOne({where:{email:resetdata}})
-  console.log(result)
-  if(result !== null){
-    let result = db.users.update({password:req.body.NewPassword},{where:{email:resetdata}})
-    res.status(200).send({message:"Your password is updated successfully",data:result})
+const updatepassword = async (req, res) => {
+  try {
+    let resetdata = req.body.Email;
+    let result = await db.users.findOne({ where: { email: resetdata } });
+    console.log(result);
+    if (result !== null) {
+      let result = db.users.update(
+        { password: req.body.NewPassword },
+        { where: { email: resetdata } }
+      );
+      res.status(200).send({
+        message: "Your password is updated successfully",
+        data: result,
+      });
+    } else {
+      res.status(204).send({ message: "Your email is not registered" });
+    }
+  } catch (error) {
+    res.status(500).send({ message: "something went wrong" });
   }
-  else{
-    res.status(204).send({message:"Your email is not registered"})
-  }
-} catch (error) {
-  res.status(500).send({message:"something went wrong"}) 
-}
-}
+};
 
-export { createuser, Loginuser ,updatepassword};
+export { createuser, Loginuser, updatepassword };

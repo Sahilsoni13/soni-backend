@@ -17,7 +17,6 @@ const sequelize = new Sequelize("student", "root", "123456", {
 let db = {};
 db.users = users(sequelize, DataTypes);
 // db.users.sync({force:true})
-db.Registration = Registration(sequelize,DataTypes);
+db.Registration = Registration(sequelize, DataTypes);
 //  db.Registration.sync({force:true});
 export default db;
-  

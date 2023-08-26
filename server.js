@@ -1,14 +1,14 @@
 import express from "express";
-import cors from "cors"
+import cors from "cors";
 import usersRoutes from "./src/routes/user.routes.js";
 import registrationRoutes from "./src/routes/registration.routes.js";
-const app = express()
-const port = 3000
-app.use(express.json())
-app.use(cors('*'))
+const app = express();
+const port = 3000;
+app.use(express.json());
+app.use(cors("*"));
 
-usersRoutes(app)
-registrationRoutes(app)
+usersRoutes(app);
+registrationRoutes(app);
 
 // /**
 //  * users routes
@@ -39,5 +39,5 @@ registrationRoutes(app)
 // app.post("/verify",verify)
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});
