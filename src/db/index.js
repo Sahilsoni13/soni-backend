@@ -1,6 +1,7 @@
 import { Sequelize, DataTypes } from "sequelize";
 import users from "../models/users.model.js";
 import Registration from "../models/registration.model.js";
+import productsmodel from "../models/products.model.js";
 const sequelize = new Sequelize("student", "root", "123456", {
   host: "localhost",
   dialect:
@@ -19,4 +20,6 @@ db.users = users(sequelize, DataTypes);
 // db.users.sync({force:true})
 db.Registration = Registration(sequelize, DataTypes);
 //  db.Registration.sync({force:true});
+db.productsmodel = productsmodel(sequelize,DataTypes);
+// db.productsmodel.sync({force:true})
 export default db;

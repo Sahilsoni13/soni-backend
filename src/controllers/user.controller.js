@@ -8,6 +8,7 @@ const createuser = async (req, res) => {
       res.status(500).send({ message: "This email is already exist" });
     } else {
       let result = await db.users.create(data);
+      console.log(result);
       res.status(200).send({ data: result, status: 200 });
     }
   } catch (error) {

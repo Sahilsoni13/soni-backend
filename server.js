@@ -2,13 +2,19 @@ import express from "express";
 import cors from "cors";
 import usersRoutes from "./src/routes/user.routes.js";
 import registrationRoutes from "./src/routes/registration.routes.js";
+import productsroutes from "./src/routes/products.routes.js";
 const app = express();
 const port = 3000;
 app.use(express.json());
 app.use(cors("*"));
 
+// this is my static route
+app.use('/static', express.static('uploads'))
+
+
 usersRoutes(app);
 registrationRoutes(app);
+productsroutes(app);
 
 // /**
 //  * users routes
