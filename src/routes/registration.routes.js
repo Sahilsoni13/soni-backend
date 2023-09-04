@@ -5,6 +5,7 @@ import {
   destroyuser,
   updateusers,
 } from "../controllers/registration.controller.js";
+import verifyToken from "../middleware/auth.js";
 
 const registrationRoutes = (app) => {
   let routes = express.Router();
@@ -12,7 +13,7 @@ const registrationRoutes = (app) => {
   routes.post("/newusers", Usercreate);
   routes.put("/updateusers", updateusers);
 
-  routes.get("/usersdetails", getusersdetails);
+  routes.get("/usersdetails",verifyToken, getusersdetails);
   routes.delete("/destroyuserid:email", destroyuser);
   // routes.put('/update',dltdata);
 
